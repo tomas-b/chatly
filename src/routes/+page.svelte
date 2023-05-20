@@ -7,36 +7,18 @@
 <FirebaseApp {auth} {firestore}>
   <User let:user>
     <div
-      class="
-    bg-gray-100
-    text-gray-900
-    min-h-screen
-    grid
-  "
+      class="bg-gray-100 text-gray-900 min-h-screen grid grid-rows-[100px_auto]"
     >
-      <header
-        class=" 
-        justify-items-end
-        justify-end
-        flex
-        p-4"
-      >
+      <header class="justify-items-end justify-end flex p-4">
         <button on:click={() => auth.signOut()}>
           <img
             src={user.photoURL}
             alt="User"
-            class="
-          w-12
-          h-12
-          rounded-full
-          shadow-lg
-          hover:shadow-xl
-          hover:scale-105
-        "
-          />out</button
+            class="w-16 h-16 rounded-full"
+          /></button
         >
       </header>
-      <main />
+      <main></main>
     </div>
     <Login slot="signedOut" />
   </User>
