@@ -1,7 +1,7 @@
 {
   "id": "chatly-chat",
-  "name": "Chatly Chat",
-  "short_name": "Chatly Chat",
+  "name": "Chatly",
+  "short_name": "Chatly",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
