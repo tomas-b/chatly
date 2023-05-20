@@ -1,31 +1,43 @@
 <script>
-  import { fade } from "svelte/transition";
   import { auth, firestore } from "$lib/firebase";
   import { FirebaseApp, User } from "sveltefire";
-  import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+  import Login from "./Login.svelte";
 </script>
 
 <FirebaseApp {auth} {firestore}>
   <User let:user>
-    <p>Howdy, {user.displayName}</p>
-    <button on:click={() => signOut(auth)}> Sign Out </button>
-
     <div
-      slot="signedOut"
       class="
-      fixed inset-0 flex items-center justify-center
-      bg-gray-900 bg-opacity-90 text-white text-2xl
-    "
+    bg-gray-100
+    text-gray-900
+    min-h-screen
+    grid
+  "
     >
-      <button
-        on:click={() => signInWithPopup(auth, new GoogleAuthProvider())}
-        class="
-        bg-white text-black rounded p-4 shadow-lg
-        "
-        in:fade={{ duration: 1000 }}
+      <header
+        class=" 
+        justify-items-end
+        justify-end
+        flex
+        p-4"
       >
-        Sign In With Google
-      </button>
+        <button on:click={() => auth.signOut()}>
+          <img
+            src={user.photoURL}
+            alt="User"
+            class="
+          w-12
+          h-12
+          rounded-full
+          shadow-lg
+          hover:shadow-xl
+          hover:scale-105
+        "
+          />out</button
+        >
+      </header>
+      <main />
     </div>
+    <Login slot="signedOut" />
   </User>
 </FirebaseApp>
