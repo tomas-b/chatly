@@ -1,14 +1,11 @@
 <script>
   import { auth, firestore } from "$lib/firebase";
+  import { FirebaseApp, User } from "sveltefire";
   import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
-
-  import { userStore, FirebaseApp, User } from "sveltefire";
-  const user = userStore(auth);
 </script>
 
 <FirebaseApp {auth} {firestore}>
   <User let:user>
-
     <p>Howdy, {user.displayName}</p>
     <button on:click={() => signOut(auth)}> Sign Out </button>
 
@@ -18,6 +15,5 @@
         Sign In With Google
       </button>
     </div>
-
   </User>
 </FirebaseApp>
