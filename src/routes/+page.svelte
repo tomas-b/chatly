@@ -1,4 +1,5 @@
 <script>
+  import { fade } from "svelte/transition";
   import { auth, firestore } from "$lib/firebase";
   import { FirebaseApp, User } from "sveltefire";
   import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
@@ -21,6 +22,7 @@
         class="
         bg-white text-black rounded p-4 shadow-lg
         "
+        in:fade={{ duration: 1000 }}
       >
         Sign In With Google
       </button>
