@@ -29,6 +29,10 @@ export const results: Readable<User[]> = derived(
     if (!$search) {
       return set([]);
     }
-    set(($users ?? []).filter((user) => user.email.includes($search ?? "")))
+    set(
+      ($users ?? []).filter((user) =>
+        user.email.toLowerCase().includes(($search ?? "").toLowerCase())
+      )
+    );
   }
 );
