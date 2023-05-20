@@ -9,9 +9,19 @@
     <p>Howdy, {user.displayName}</p>
     <button on:click={() => signOut(auth)}> Sign Out </button>
 
-    <div slot="signedOut">
-      logged out.
-      <button on:click={() => signInWithPopup(auth, new GoogleAuthProvider())}>
+    <div
+      slot="signedOut"
+      class="
+      fixed inset-0 flex items-center justify-center
+      bg-gray-900 bg-opacity-90 text-white text-2xl
+    "
+    >
+      <button
+        on:click={() => signInWithPopup(auth, new GoogleAuthProvider())}
+        class="
+        bg-white text-black rounded p-4 shadow-lg
+        "
+      >
         Sign In With Google
       </button>
     </div>
