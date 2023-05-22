@@ -137,6 +137,8 @@ export const subscribeToChat = async (email: string) => {
       done = true;
       search.set(null);
 
+      console.log({ user });
+
       // create their doc
       const ref = doc(collection(firestore, "users/" + user.email + "/chats"));
       const id = ref.id;
@@ -148,6 +150,9 @@ export const subscribeToChat = async (email: string) => {
         date: serverTimestamp(),
         lastMessage: "",
       });
+
+      console.log("doc 1 created");
+
       // create my doc
       const myRef = doc(
         firestore,
@@ -162,11 +167,15 @@ export const subscribeToChat = async (email: string) => {
         lastMessage: "",
       });
 
+      console.log("doc 2 created");
+
       chat.set({
         displayName: user.displayName,
         photoURL: user.photoURL,
         chatRef: "/chats/" + id,
       });
+
+      console.log("chat set");
 
       // create chat doc
       const chatRef = doc(firestore, "chats/" + id);
@@ -174,7 +183,11 @@ export const subscribeToChat = async (email: string) => {
         users: [user.email, auth?.currentUser?.email],
       });
 
+      console.log("chat doc created");
+
       messages.set([]);
+
+      console.log("messages set");
 
       onSnapshot(
         query(
@@ -185,6 +198,8 @@ export const subscribeToChat = async (email: string) => {
           messages.set(snap.docs.map((doc: any) => doc.data()));
         }
       );
+
+      console.log("...listening");
     });
   }
 };
