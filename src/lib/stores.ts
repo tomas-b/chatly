@@ -98,7 +98,6 @@ export const messages = writable<
 export const subscribeToChat = async (email: string) => {
   // check if chat exists. if not, create it
   let listening = false;
-  let done = false;
 
   const user = get(userStore(auth));
   if (!user) return;
@@ -130,41 +129,62 @@ export const subscribeToChat = async (email: string) => {
   });
 
   if (!listening) {
+    let done = false;
     search.set(email);
-    const users = get(results);
+    results.subscribe(async (users) => {
+      const user = users.find((user) => user.email === email);
+      if (done || !user) return;
+      done = true;
+      search.set(null);
 
-    const user = users.find((user) => user.email === email);
-    if (done || !user) return;
-    done = true;
+      // create their doc
+      const ref = doc(collection(firestore, "users/" + user.email + "/chats"));
+      const id = ref.id;
+      await setDoc(ref, {
+        displayName: auth?.currentUser?.displayName,
+        photoURL: auth?.currentUser?.photoURL,
+        _with: [auth?.currentUser?.email],
+        chatRef: "/chats/" + id,
+        date: serverTimestamp(),
+        lastMessage: "",
+      });
+      // create my doc
+      const myRef = doc(
+        firestore,
+        "users/" + auth?.currentUser?.email + "/chats/" + id
+      );
+      await setDoc(myRef, {
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+        _with: [user.email],
+        chatRef: "/chats/" + id,
+        date: serverTimestamp(),
+        lastMessage: "",
+      });
 
-    // create their doc
-    const ref = doc(collection(firestore, "users/" + user.email + "/chats"));
-    const id = ref.id;
-    await setDoc(ref, {
-      displayName: auth?.currentUser?.displayName,
-      photoURL: auth?.currentUser?.photoURL,
-      _with: [auth?.currentUser?.email],
-      chatRef: "/chats/" + id,
-      date: serverTimestamp(),
-      lastMessage: "",
-    });
-    // create my doc
-    const myRef = doc(
-      firestore,
-      "users/" + auth?.currentUser?.email + "/chats/" + id
-    );
-    await setDoc(myRef, {
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      _with: [user.email],
-      chatRef: "/chats/" + id,
-      date: serverTimestamp(),
-      lastMessage: "",
-    });
-    // create chat doc
-    const chatRef = doc(firestore, "chats/" + id);
-    await setDoc(chatRef, {
-      users: [user.email, auth?.currentUser?.email],
+      chat.set({
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+        chatRef: "/chats/" + id,
+      });
+
+      // create chat doc
+      const chatRef = doc(firestore, "chats/" + id);
+      await setDoc(chatRef, {
+        users: [user.email, auth?.currentUser?.email],
+      });
+
+      messages.set([]);
+
+      onSnapshot(
+        query(
+          collection(firestore, chatRef.path + "/messages"),
+          orderBy("date", "asc")
+        ),
+        (snap) => {
+          messages.set(snap.docs.map((doc: any) => doc.data()));
+        }
+      );
     });
   }
 };

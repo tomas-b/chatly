@@ -118,4 +118,10 @@
       </div>
     </button>
   </div>
+{:else}
+  <div
+    class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-90 text-white text-2xl"
+  >
+    <p>Loading...</p>
+  </div>
 {/if}

@@ -1,0 +1,114 @@
+[debug] [2023-05-22T12:55:21.393Z] ----------------------------------------------------------------------
+[debug] [2023-05-22T12:55:21.394Z] Command:       /Users/tomb/.nvm/versions/node/v16.20.0/bin/node /Users/tomb/.nvm/versions/node/v16.20.0/bin/firebase deploy
+[debug] [2023-05-22T12:55:21.394Z] CLI Version:   11.15.0
+[debug] [2023-05-22T12:55:21.394Z] Platform:      darwin
+[debug] [2023-05-22T12:55:21.394Z] Node Version:  v16.20.0
+[debug] [2023-05-22T12:55:21.395Z] Time:          Mon May 22 2023 09:55:21 GMT-0300 (Argentina Standard Time)
+[debug] [2023-05-22T12:55:21.395Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-05-22T12:55:21.423Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-05-22T12:55:21.423Z] > authorizing via signed-in user (tomas.b.lp@gmail.com)
+[debug] [2023-05-22T12:55:21.423Z] [iam] checking project chatly-click for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2023-05-22T12:55:21.424Z] > refreshing access token with scopes: []
+[debug] [2023-05-22T12:55:21.425Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-05-22T12:55:21.425Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-22T12:55:21.785Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-05-22T12:55:21.786Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-22T12:55:21.800Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatly-click:testIamPermissions [none]
+[debug] [2023-05-22T12:55:21.800Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatly-click:testIamPermissions x-goog-quota-user=projects/chatly-click
+[debug] [2023-05-22T12:55:21.800Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatly-click:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-05-22T12:55:23.130Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatly-click:testIamPermissions 200
+[debug] [2023-05-22T12:55:23.130Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatly-click:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-05-22T12:55:23.131Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/chatly-click/serviceAccounts/chatly-click@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-05-22T12:55:23.131Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/chatly-click/serviceAccounts/chatly-click@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-05-22T12:55:24.174Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/chatly-click/serviceAccounts/chatly-click@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2023-05-22T12:55:24.174Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/chatly-click/serviceAccounts/chatly-click@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'chatly-click'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] ✔  functions: Finished running predeploy script. 
+[debug] [2023-05-22T12:55:26.245Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/chatly-click [none]
+[debug] [2023-05-22T12:55:26.633Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/chatly-click 200
+[debug] [2023-05-22T12:55:26.634Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/chatly-click {"projectId":"chatly-click","projectNumber":"627979376686","displayName":"chatly-click","name":"projects/chatly-click","resources":{"hostingSite":"chatly-click"},"state":"ACTIVE","etag":"1_2f321265-47ca-496e-93b3-9a0b04042b7d"}
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2023-05-22T12:55:26.635Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/chatly-click/services/cloudfunctions.googleapis.com [none]
+[debug] [2023-05-22T12:55:26.635Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/chatly-click/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/chatly-click
+[debug] [2023-05-22T12:55:26.636Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/chatly-click/services/runtimeconfig.googleapis.com [none]
+[debug] [2023-05-22T12:55:26.636Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/chatly-click/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/chatly-click
+[debug] [2023-05-22T12:55:26.637Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/chatly-click/services/cloudbuild.googleapis.com [none]
+[debug] [2023-05-22T12:55:26.637Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/chatly-click/services/cloudbuild.googleapis.com x-goog-quota-user=projects/chatly-click
+[debug] [2023-05-22T12:55:26.637Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/chatly-click/services/artifactregistry.googleapis.com [none]
+[debug] [2023-05-22T12:55:26.637Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/chatly-click/services/artifactregistry.googleapis.com x-goog-quota-user=projects/chatly-click
+[debug] [2023-05-22T12:55:27.930Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/chatly-click/services/runtimeconfig.googleapis.com 200
+[debug] [2023-05-22T12:55:27.930Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/chatly-click/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2023-05-22T12:55:27.931Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/chatly-click/services/cloudfunctions.googleapis.com 200
+[debug] [2023-05-22T12:55:27.931Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/chatly-click/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2023-05-22T12:55:27.933Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/chatly-click/services/cloudbuild.googleapis.com 200
+[debug] [2023-05-22T12:55:27.933Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/chatly-click/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2023-05-22T12:55:27.933Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/chatly-click/services/artifactregistry.googleapis.com 200
+[debug] [2023-05-22T12:55:27.933Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/chatly-click/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2023-05-22T12:55:27.934Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/chatly-click/adminSdkConfig [none]
+[debug] [2023-05-22T12:55:28.369Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/chatly-click/adminSdkConfig 200
+[debug] [2023-05-22T12:55:28.369Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/chatly-click/adminSdkConfig {"projectId":"chatly-click","storageBucket":"chatly-click.appspot.com"}
+[debug] [2023-05-22T12:55:28.370Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/chatly-click/configs [none]
+[debug] [2023-05-22T12:55:29.520Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/chatly-click/configs 200
+[debug] [2023-05-22T12:55:29.520Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/chatly-click/configs {}
+[info] i  functions: preparing codebase default for deployment 
+[debug] [2023-05-22T12:55:29.523Z] Validating nodejs source
+[debug] [2023-05-22T12:55:29.742Z] checkFunctionsSDKVersion encountered error:Invalid Version:  {}
+[debug] [2023-05-22T12:55:29.743Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^10.2.0",
+    "firebase-functions": "^3.21.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.4"
+  },
+  "private": true
+}
+[debug] [2023-05-22T12:55:29.743Z] Building nodejs source
+[debug] [2023-05-22T12:55:30.087Z] Could not parse firebase-functions version '' into semver. Falling back to parseTriggers.
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged /Users/tomb/SCALE/chatly/functions (3.69 KB) for uploading 
+[debug] [2023-05-22T12:55:30.281Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/chatly-click/locations/-/functions [none]
+[debug] [2023-05-22T12:55:32.219Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/chatly-click/locations/-/functions 200
+[debug] [2023-05-22T12:55:32.219Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/chatly-click/locations/-/functions {"functions":[{"name":"projects/chatly-click/locations/us-central1/functions/cleanChats","httpsTrigger":{"url":"https://us-central1-chatly-click.cloudfunctions.net/cleanChats","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"cleanChats","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"chatly-click@appspot.gserviceaccount.com","updateTime":"2023-05-22T12:05:41.230Z","versionId":"1","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"7fd413c3eef02d99f257cb3b3f26d43ab7f976c6"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-603602279654.us-central1.cloudfunctions.appspot.com/86b280f9-7f6b-4fac-8eda-f0cd8b3320a1.zip","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"chatly-click\",\"storageBucket\":\"chatly-click.appspot.com\"}","GCLOUD_PROJECT":"chatly-click"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"e02b638e-b708-49a5-87b8-147611002c6c","buildName":"projects/627979376686/locations/us-central1/builds/e02b638e-b708-49a5-87b8-147611002c6c","dockerRegistry":"ARTIFACT_REGISTRY"},{"name":"projects/chatly-click/locations/us-central1/functions/getUsers","httpsTrigger":{"url":"https://us-central1-chatly-click.cloudfunctions.net/getUsers","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"getUsers","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"chatly-click@appspot.gserviceaccount.com","updateTime":"2023-05-22T12:05:54.487Z","versionId":"6","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"7fd413c3eef02d99f257cb3b3f26d43ab7f976c6"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-603602279654.us-central1.cloudfunctions.appspot.com/86b280f9-7f6b-4fac-8eda-f0cd8b3320a1.zip","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"chatly-click\",\"storageBucket\":\"chatly-click.appspot.com\"}","GCLOUD_PROJECT":"chatly-click"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"848821a2-9777-4169-8015-26334130726e","buildName":"projects/627979376686/locations/us-central1/builds/848821a2-9777-4169-8015-26334130726e","dockerRegistry":"ARTIFACT_REGISTRY"}]}
+[debug] [2023-05-22T12:55:32.220Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/chatly-click/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2023-05-22T12:55:33.611Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/chatly-click/locations/-/functions 200
+[debug] [2023-05-22T12:55:33.611Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/chatly-click/locations/-/functions {}
+[debug] [2023-05-22T12:55:33.615Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/chatly-click [none]
+[debug] [2023-05-22T12:55:34.134Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/chatly-click 200
+[debug] [2023-05-22T12:55:34.134Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/chatly-click {"projectId":"chatly-click","projectNumber":"627979376686","displayName":"chatly-click","name":"projects/chatly-click","resources":{"hostingSite":"chatly-click"},"state":"ACTIVE","etag":"1_2f321265-47ca-496e-93b3-9a0b04042b7d"}
+[debug] [2023-05-22T12:55:34.134Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/chatly-click [none]
+[debug] [2023-05-22T12:55:34.660Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/chatly-click 200
+[debug] [2023-05-22T12:55:34.660Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/chatly-click {"projectId":"chatly-click","projectNumber":"627979376686","displayName":"chatly-click","name":"projects/chatly-click","resources":{"hostingSite":"chatly-click"},"state":"ACTIVE","etag":"1_2f321265-47ca-496e-93b3-9a0b04042b7d"}
+[debug] [2023-05-22T12:55:34.661Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/chatly-click [none]
+[debug] [2023-05-22T12:55:35.014Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/chatly-click 200
+[debug] [2023-05-22T12:55:35.014Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/chatly-click {"projectId":"chatly-click","projectNumber":"627979376686","displayName":"chatly-click","name":"projects/chatly-click","resources":{"hostingSite":"chatly-click"},"state":"ACTIVE","etag":"1_2f321265-47ca-496e-93b3-9a0b04042b7d"}
+[debug] [2023-05-22T12:55:35.015Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/chatly-click/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2023-05-22T12:55:35.015Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/chatly-click/locations/us-central1/functions:generateUploadUrl {}
+[debug] [2023-05-22T12:55:36.880Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/chatly-click/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2023-05-22T12:55:36.880Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/chatly-click/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-603602279654.us-central1.cloudfunctions.appspot.com/bfba5d70-6920-470d-ab8b-693308d3c20c.zip?GoogleAccessId=service-627979376686@gcf-admin-robot.iam.gserviceaccount.com&Expires=1684761936&Signature=KYuyr15tLDjK%2FtbzSBOI8CnOJwUUklPsAVRfyRE3OY%2B6gVKqPCM5c9Dm884%2BlkzVdYk7Cv%2B4QN3w%2F%2BniaiUQW%2Fby2dynKPePkf6oJKQgHnaubbRKfgGGH%2BHX4oRXT3SlFhQX7xQCHaRfdZ8Rlba74vyObMofHcBaova%2BejygLx5MoozI3J1jzb%2BudvXzzjXrE2GO%2BpUFIA42Sa5ME91%2BR6JYEKWT7frCNOhnnL1c9e%2BHVCPqu8dnZRTAzTPxhBoxfyzW1Dfr1yvlhi656MK%2Fsa0DyunBXF8d7OHusJlDRR6NDbfNshD8KJrmSjcLkNUadkNZs8vBEIA9q2q5UdoNlQ%3D%3D"}
+[debug] [2023-05-22T12:55:36.881Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-603602279654.us-central1.cloudfunctions.appspot.com/bfba5d70-6920-470d-ab8b-693308d3c20c.zip GoogleAccessId=service-627979376686%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1684761936&Signature=KYuyr15tLDjK%2FtbzSBOI8CnOJwUUklPsAVRfyRE3OY%2B6gVKqPCM5c9Dm884%2BlkzVdYk7Cv%2B4QN3w%2F%2BniaiUQW%2Fby2dynKPePkf6oJKQgHnaubbRKfgGGH%2BHX4oRXT3SlFhQX7xQCHaRfdZ8Rlba74vyObMofHcBaova%2BejygLx5MoozI3J1jzb%2BudvXzzjXrE2GO%2BpUFIA42Sa5ME91%2BR6JYEKWT7frCNOhnnL1c9e%2BHVCPqu8dnZRTAzTPxhBoxfyzW1Dfr1yvlhi656MK%2Fsa0DyunBXF8d7OHusJlDRR6NDbfNshD8KJrmSjcLkNUadkNZs8vBEIA9q2q5UdoNlQ%3D%3D
+[debug] [2023-05-22T12:55:36.881Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-603602279654.us-central1.cloudfunctions.appspot.com/bfba5d70-6920-470d-ab8b-693308d3c20c.zip [stream]

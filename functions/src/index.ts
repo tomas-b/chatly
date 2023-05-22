@@ -27,3 +27,13 @@ exports.cleanChats = functions.https.onRequest(async (req, res) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   res.json({ status: "ok" });
 });
+
+exports.createProfile = functions.auth.user().onCreate(async (user) => {
+  console.log("user created", user);
+  const doc = admin.firestore().doc(`users/${user.email}`);
+  await doc.set({
+    email: user.email,
+    displayName: user.displayName,
+    photoURL: user.photoURL,
+  });
+});
